@@ -57,7 +57,7 @@ Al terminar la descarga se abre el **SQL Server Installation Center**. Desde la 
 
 ### 3.1 Edición
 
-Se seleccionó **Specify a free edition → Standard Developer**.
+Se seleccionó **Edition → Specify a free edition → Standard Developer**.
 
 <p align="center"> <img src="https://github.com/fybersec/sqli-sqlserver-lab/blob/main/evidencias/01-sql-server/5.png" width="600"> </p>
 
