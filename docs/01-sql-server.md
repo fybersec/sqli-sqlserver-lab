@@ -7,7 +7,6 @@ Esta fase deja listo el servidor de base de datos que usará la aplicación web 
 - La base de datos `LabSQLI` con la tabla `Usuarios` y dos usuarios de prueba.
 - Un inicio de sesión de SQL Server, `webuser`, con el que se conectará la aplicación.
 
-> **Entorno:** VM Windows Server (nombre de equipo `WIN-5OCEJPK16SB`), red NAT aislada. Todas las capturas se tomaron el 2/10/2026 (instalación) y el 4/10/2026 (base de datos y usuario).
 
 ---
 
