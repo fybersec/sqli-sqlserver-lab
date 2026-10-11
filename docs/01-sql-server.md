@@ -4,7 +4,7 @@ Esta fase deja listo el servidor de base de datos que usará la aplicación web 
 
 - SQL Server 2025 (Standard Developer) instalado en la VM Windows Server.
 - SQL Server Management Studio (SSMS) para administrarlo.
-- La base de datos `LabSQLi` con la tabla `Usuarios` y dos usuarios de prueba.
+- La base de datos `LabSQLI` con la tabla `Usuarios` y dos usuarios de prueba.
 - Un inicio de sesión de SQL Server, `webuser`, con el que se conectará la aplicación.
 
 > **Entorno:** VM Windows Server (nombre de equipo `WIN-5OCEJPK16SB`), red NAT aislada. Todas las capturas se tomaron el 2/10/2026 (instalación) y el 4/10/2026 (base de datos y usuario).
@@ -171,9 +171,9 @@ La regla aparece al inicio de la lista de reglas de entrada, habilitada (columna
 
 ---
 
-## 6. Base de datos `LabSQLi`
+## 6. Base de datos `LabSQLI`
 
-Se creó la base de datos del laboratorio con el nombre `LabSQLi`. En el Explorador de objetos aparece como `LabSQLI`: SQL Server no distingue mayúsculas de minúsculas en los nombres con la configuración regional predeterminada, así que ambas escrituras apuntan a la misma base.
+Se creó la base de datos del laboratorio con el nombre `LabSQLI`. En el Explorador de objetos aparece como `LabSQLI`: SQL Server no distingue mayúsculas de minúsculas en los nombres con la configuración regional predeterminada, así que ambas escrituras apuntan a la misma base.
 ```sql
 CREATE DATABASE LabsSQLI;
 ```
@@ -182,10 +182,10 @@ CREATE DATABASE LabsSQLI;
 
 ## 7. Tabla `Usuarios` y datos de prueba
 
-Desde una consulta nueva en SSMS, con `LabSQLi` seleccionada como base activa, se ejecutó:
+Desde una consulta nueva en SSMS, con `LabSQLI` seleccionada como base activa, se ejecutó:
 
 ```sql
-USE LabSQLi;
+USE LabSQLI;
 CREATE TABLE Usuarios (
 id INT PRIMARY KEY IDENTITY,
 usuario VARCHAR(50),
@@ -202,7 +202,7 @@ INSERT INTO Usuarios (usuario,clave,rol) VALUES
 
 | Línea                         | Qué hace                                                                                  |
 | ----------------------------- | ----------------------------------------------------------------------------------------- |
-| `USE LabSQLi;`                | Cambia el contexto a la base `LabSQLi`. Sin esto la tabla se crearía en la base `master`. |
+| `USE LabSQLI;`                | Cambia el contexto a la base `LabSQLI`. Sin esto la tabla se crearía en la base `master`. |
 | `CREATE TABLE Usuarios (...)` | Crea la tabla `Usuarios`.                                                                 |
 | `id INT PRIMARY KEY IDENTITY` | Identificador numérico único, que SQL Server genera solo (1, 2, 3...).                    |
 | `usuario VARCHAR(50)`         | Nombre de usuario, hasta 50 caracteres.                                                   |
@@ -236,7 +236,7 @@ La aplicación web no debe conectarse con la cuenta de administrador. Se creó u
 ```sql
 CREATE LOGIN webuser WITH PASSWORD = 'WebPass123!';
 GO
-USE LabSQLi;
+USE LabSQLI;
 GO
 CREATE USER webuser FOR LOGIN webuser;
 ALTER ROLE db_owner ADD MEMBER webuser;
@@ -248,9 +248,9 @@ ALTER ROLE db_owner ADD MEMBER webuser;
 |---|---|
 |`CREATE LOGIN webuser WITH PASSWORD = ...`|Crea el **inicio de sesión** a nivel de servidor (la identidad que puede conectarse a la instancia).|
 |`GO`|Separa lotes. El cambio de base de datos con `USE` debe estar en un lote aparte de la creación del login.|
-|`USE LabSQLi;`|Cambia a la base del laboratorio.|
+|`USE LabSQLI;`|Cambia a la base del laboratorio.|
 |`CREATE USER webuser FOR LOGIN webuser;`|Crea el **usuario** dentro de la base de datos y lo enlaza con el login. Login y usuario son dos objetos distintos.|
-|`ALTER ROLE db_owner ADD MEMBER webuser;`|Agrega el usuario al rol `db_owner`, es decir, control total sobre `LabSQLi`.|
+|`ALTER ROLE db_owner ADD MEMBER webuser;`|Agrega el usuario al rol `db_owner`, es decir, control total sobre `LabSQLI`.|
 
 <p align="center"> <img src="https://github.com/fybersec/sqli-sqlserver-lab/blob/main/evidencias/01-sql-server/16.png" width="600"> </p>
 
@@ -270,7 +270,7 @@ Se asignó `db_owner` a propósito: es una configuración **excesivamente permis
 |Autenticación|Modo mixto|
 |Protocolos|TCP/IP y Shared Memory habilitados; Named Pipes deshabilitado|
 |Puerto|1433/TCP con regla de entrada en el firewall|
-|Base de datos|`LabSQLi`|
+|Base de datos|`LabSQLI`|
 |Tabla|`dbo.Usuarios` (2 filas)|
 |Login / usuario de aplicación|`webuser` (rol `db_owner`, intencional)|
 
