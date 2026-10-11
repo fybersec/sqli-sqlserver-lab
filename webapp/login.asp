@@ -7,7 +7,7 @@ usuarioInput = Request.Form("User")
 clave = Request.Form("password")
 
 Set conn = Server.CreateObject("ADODB.Connection")
-conn.Open "Provider=MSOLEDBSQL19;Server=localhost;Database=LabSQLi;UID=webuser;PWD=WebPass123!;Use Encryption for Data=True;Trust Server Certificate=True;"
+conn.Open "Provider=MSOLEDBSQL19;Server=localhost;Database=LabsSQLI;UID=webuser;PWD=WebPass123!;Use Encryption for Data=True;Trust Server Certificate=True;"
 
 sql = "SELECT * FROM Usuarios WHERE usuario='" & usuarioInput & _
   "' AND clave='" & clave & "'"
