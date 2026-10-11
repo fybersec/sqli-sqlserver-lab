@@ -5,7 +5,7 @@ usuario = Request.Form("User")
 clave   = Request.Form("password")
 
 Set conn = Server.CreateObject("ADODB.Connection")
-conn.Open "Provider=MSOLEDBSQL19;Server=localhost;Database=LabSQLi;" & _
+conn.Open "Provider=MSOLEDBSQL19;Server=localhost;Database=LabsSQLI;" & _
           "UID=webuser;PWD=WebPass123!;Use Encryption for Data=True;Trust Server Certificate=True;"
 
 Set cmd = Server.CreateObject("ADODB.Command")
